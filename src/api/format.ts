@@ -112,6 +112,32 @@ export const formatting: Formats = {
     nodes: ['BulletList'],
     prefix: '- ',
   }),
+  [InkValues.Markup.Table]: defineConfig({
+    block: true,
+    nodes: ['Table'],
+    prefix: `
+| Head1    |   Head2  |  Head3 |
+| :------- | :------: | -----: |
+| Row1-1   |  Row1-2  | Row1-3 |
+| Row2-2   |  Row2-2  | Row2-3 |
+    `,
+  }),
+  [InkValues.Markup.Horizontal]: defineConfig({
+    line: true,
+    nodes: ['Horizontal'],
+    prefix: '----\n',
+  }),
+[InkValues.Markup.Underline]: defineConfig({
+    nodes: ['Underline'],
+    prefix: '__',
+    suffix: '__'
+  }),
+ [InkValues.Markup.StrikeThrough]: defineConfig({
+    multiline: false,
+    nodes: ['StrikeThrough'],
+    prefix: '~~',
+    suffix: '~~'
+  }),
 }
 
 const splitSelectionByLines = ({ editor, selection }: ChangeDetails) => {

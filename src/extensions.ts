@@ -76,6 +76,7 @@ export const resolvers: InkInternal.ExtensionResolvers = [
 
       return matches
     }, <Ink.VendorGrammar[]>[])
+
     const languagePlugins = options.plugins.reduce((matches, plugin) => {
       if (plugin.type === InkValues.PluginType.Language) {
         matches.push(plugin.value)
@@ -84,10 +85,19 @@ export const resolvers: InkInternal.ExtensionResolvers = [
       return matches
     }, <Ink.VendorLanguage[]>[])
 
+    const stateFieldPlugins = options.plugins.reduce((matches, plugin) => {
+      if (plugin.type === InkValues.PluginType.StateField) {
+        console.log(plugin);
+        matches.push(plugin.value)
+      }
+
+      return matches
+    }, <Ink.VendorStateField[]>[])
+
     return markdown({
       base: markdownLanguage,
       codeLanguages: [...languages, ...languagePlugins],
-      extensions: grammarPlugins,
+      extensions: [...grammarPlugins, ...stateFieldPlugins],
     })
   },
   (options: Ink.OptionsResolved) => {
@@ -168,6 +178,15 @@ export const lazyResolvers: InkInternal.LazyExtensionResolvers = [
       const { vim } = await import('/src/vendor/extensions/vim')
 
       return compartment.reconfigure(vim())
+    }
+
+    return compartment.reconfigure([])
+  },
+  async (options: Ink.OptionsResolved, compartment: InkInternal.Vendor.Compartment) => {
+    if (options.history) {
+      const { history } = await import('/src/vendor/extensions/history')
+
+      return compartment.reconfigure(history())
     }
 
     return compartment.reconfigure([])

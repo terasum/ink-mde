@@ -128,7 +128,7 @@
     "@lezer/highlight": "^1.1.3",
     "@lezer/markdown": "^1.0.2",
     "@replit/codemirror-vim": "^6.0.10",
-    "ink-mde": "workspace:*",
+    "ink-mde": "link:",
     "solid-js": "^1.6.15",
     "style-mod": "^4.0.2"
   },

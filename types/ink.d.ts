@@ -4,11 +4,13 @@ import { type CompletionSource } from '@codemirror/autocomplete'
 import { type LanguageDescription } from '@codemirror/language'
 import { type Extension } from '@codemirror/state'
 import { type MarkdownConfig } from '@lezer/markdown'
+import type { KeyBinding as VendorKeyBinding } from '@codemirror/view'
 
 export type VendorCompletion = CompletionSource
 export type VendorExtension = Extension
 export type VendorGrammar = MarkdownConfig
 export type VendorLanguage = LanguageDescription
+export type VendorStateField = StateField
 
 export * from './values'
 
@@ -34,6 +36,8 @@ export interface Instance {
   selections: () => Editor.Selection[]
   update: (doc: string) => void
   wrap: (options: Instance.WrapOptions) => void
+  undoCmd: () => void
+  redoCmd: () => void
 }
 
 export namespace Instance {
@@ -90,6 +94,7 @@ export interface Options {
   selections?: Editor.Selection[],
   toolbar?: Partial<Options.Toolbar>,
   vim?: boolean,
+  history?: boolean,
 }
 
 export interface OptionsResolved {
@@ -104,12 +109,13 @@ export interface OptionsResolved {
   selections: Editor.Selection[],
   toolbar: Required<Options.Toolbar>,
   vim: boolean,
+  history: boolean,
 }
 
 export namespace Options {
   export type ExtensionNames = keyof Options.Extensions
 
-  export type Plugin = Plugins.Completion | Plugins.Default | Plugins.Grammar | Plugins.Language
+  export type Plugin = Plugins.Completion | Plugins.Default | Plugins.Grammar | Plugins.Language | Plugins.StateField
 
   export namespace Plugins {
     export interface Completion {
@@ -131,6 +137,10 @@ export namespace Options {
       type: EnumString<InkValues.PluginType.Language>
       value: VendorLanguage
     }
+    export interface Language {
+      type: EnumString<InkValues.PluginType.StateField>
+      value: VendorStateField
+    }
   }
 
 
@@ -141,6 +151,7 @@ export namespace Options {
     [InkValues.Extensions.ReadOnly]: boolean
     [InkValues.Extensions.Spellcheck]: boolean
     [InkValues.Extensions.Vim]: boolean
+    [InkValues.Extensions.History]: boolean
   }
 
   export interface Files {
@@ -173,6 +184,8 @@ export namespace Options {
   }
 
   export interface Toolbar {
+    undo: boolean
+    redo: boolean
     bold: boolean
     code: boolean
     codeBlock: boolean
@@ -186,6 +199,8 @@ export namespace Options {
     taskList: boolean
     upload: boolean
   }
+
+  export type KeyBinding = VendorKeyBinding
 }
 
 export namespace Values {

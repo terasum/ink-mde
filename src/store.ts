@@ -36,7 +36,10 @@ export const blankState = (): InkInternal.StateResolved => {
     readability: false,
     search: true,
     selections: [],
+    ignoreKeyMaps: false,
     toolbar: {
+      undo: true,
+      redo: true,
       bold: true,
       code: true,
       codeBlock: true,
@@ -51,6 +54,7 @@ export const blankState = (): InkInternal.StateResolved => {
       upload: false,
     },
     vim: false,
+    history: false,
   }
 
   return {

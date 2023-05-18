@@ -11,6 +11,8 @@ import {
   selections,
   update,
   wrap,
+  undoCmd,
+  redoCmd,
 } from '/src/api'
 import type * as Ink from '/types/ink'
 import type InkInternal from '/types/internal'
@@ -29,5 +31,7 @@ export const makeInstance = (store: InkInternal.Store): Ink.Instance => {
     selections: selections.bind(undefined, store),
     update: update.bind(undefined, store),
     wrap: wrap.bind(undefined, store),
+    undoCmd: undoCmd.bind(undefined, store),
+    redoCmd: redoCmd.bind(undefined, store),
   }
 }

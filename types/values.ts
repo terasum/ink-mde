@@ -12,6 +12,7 @@ export enum Extensions {
   ReadOnly = 'readonly',
   Spellcheck = 'spellcheck',
   Vim = 'vim',
+  History = 'history',
 }
 
 export enum Markup {
@@ -26,6 +27,10 @@ export enum Markup {
   OrderedList = 'ordered_list',
   Quote = 'quote',
   TaskList = 'task_list',
+  Table= 'table',
+  Horizontal =  'horizontal_line',
+  Underline= 'underline',
+  StrikeThrough= 'strike_through',
 }
 
 export enum PluginType {
@@ -33,6 +38,7 @@ export enum PluginType {
   Default = 'default',
   Grammar = 'grammar',
   Language = 'language',
+  StateField = "statefield"
 }
 
 export enum Selection {

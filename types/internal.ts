@@ -5,7 +5,7 @@ import type {
   StateEffect as VendorStateEffect,
   Transaction as VendorTransaction,
 } from '@codemirror/state'
-import type { EditorView as VendorView } from '@codemirror/view'
+import type { KeyBinding as VendorKeyBinding, EditorView as VendorView } from '@codemirror/view'
 import type { Accessor, Setter } from 'solid-js'
 import type * as Ink from '/types/ink'
 import type InkUi from '/types/ui'
@@ -75,6 +75,7 @@ export namespace InkInternal {
     export type StateEffect<Type> = VendorStateEffect<Type>
     export type Transaction = VendorTransaction
     export type View = VendorView
+    export type KeyBinding = VendorKeyBinding
   }
 }
 

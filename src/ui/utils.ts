@@ -53,9 +53,10 @@ export const makeVars = (state: InkInternal.StateResolved) => {
     { suffix: 'editor-font-size', default: '1em' },
     { suffix: 'editor-line-height', default: '2em' },
     { suffix: 'editor-padding', default: '0.5rem' },
+    { suffix: 'editor-background', default: '#f5f5f5', light: '#fff', dark: '#e0e0e0' },
     { suffix: 'inline-padding', default: '0.125rem' },
     // --ink-modal-*
-    { suffix: 'modal-position', default: 'fixed' },
+    { suffix: 'modal-position', default: 'absolute' },
     // --ink-syntax-*
     { suffix: 'syntax-atom-color', default: '#d19a66' },
     { suffix: 'syntax-comment-color', default: '#abb2bf' },
@@ -109,7 +110,7 @@ export const makeVars = (state: InkInternal.StateResolved) => {
     { suffix: 'syntax-strong-color', default: 'inherit' },
     { suffix: 'syntax-strong-font-weight', default: '600' },
     { suffix: 'syntax-url-color', default: '#aaaaaa', light: '#666666' },
-    { suffix: 'toolbar-group-spacing', default: '2rem' },
+    { suffix: 'toolbar-group-spacing', default: '.5rem' },
     { suffix: 'toolbar-item-spacing', default: '0' },
   ]
 

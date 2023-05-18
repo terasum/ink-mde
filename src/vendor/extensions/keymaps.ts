@@ -4,7 +4,7 @@ import { Transaction } from '@codemirror/state'
 import type { KeyBinding } from '@codemirror/view'
 import { keymap } from '@codemirror/view'
 
-const keyMaps: KeyBinding[] = [
+export const definedkeyMaps: KeyBinding[] = [
   {
     key: 'Tab',
     run: ({ state, dispatch }) => {
@@ -26,7 +26,7 @@ const keyMaps: KeyBinding[] = [
 
 export const keymaps = (): Extension => {
   return keymap.of([
-    ...keyMaps,
+    ...definedkeyMaps,
     ...defaultKeymap,
     ...historyKeymap,
   ])
