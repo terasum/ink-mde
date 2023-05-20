@@ -116,13 +116,13 @@
     }
   },
   "dependencies": {
-    "@codemirror/autocomplete": "^6.4.2",
+    "@codemirror/autocomplete": "^6.7.1",
     "@codemirror/commands": "^6.2.2",
     "@codemirror/lang-markdown": "^6.1.0",
     "@codemirror/language": "^6.6.0",
     "@codemirror/language-data": "^6.1.0",
     "@codemirror/search": "^6.3.0",
-    "@codemirror/state": "^6.2.0",
+    "@codemirror/state": "6.2.0",
     "@codemirror/view": "^6.9.3",
     "@lezer/common": "^1.0.2",
     "@lezer/highlight": "^1.1.3",
